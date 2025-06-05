@@ -133,7 +133,7 @@ az webapp up --name sushi-heero-pos --resource-group SimplePOS-RG --runtime "DOT
 
 ## 👥 Contributors
 
-- [Jannuar Teddy Herjanto] – Project Lead & Developer
+- [Jannuar Teddy Herjanto] – Project Lead & App Developer
 
 ---
 
