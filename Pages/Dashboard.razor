@@ -1,0 +1,162 @@
+@page "/dashboard"
+@using System.Globalization
+
+<h1>Sushi Heero</h1>
+
+<h3>Main Menu</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Add</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Menu)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@(item.Price.ToString("C", CultureInfo.GetCultureInfo("id-ID")))</td>
+                <td>
+                    <input type="number" min="1" @bind="item.Quantity" style="width:60px" />
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm" @onclick="() => AddToOrder(item)">Add</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Your Order</h3>
+@if (OrderItems.Count == 0)
+{
+    <p>No orders yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Unit</th>
+                <th>Unit Price</th>
+                <th>Subtotal</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in OrderItems)
+            {
+                <tr>
+                    <td>@order.Name</td>
+                    <td>@order.Quantity</td>
+                    <td>@(order.Price.ToString("C", CultureInfo.GetCultureInfo("id-ID")))</td>
+                    <td>@((order.Quantity * order.Price).ToString("C", CultureInfo.GetCultureInfo("id-ID")))</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" @onclick="() => RemoveFromOrder(order)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h4>Total: @((TotalPrice).ToString("C", CultureInfo.GetCultureInfo("id-ID")))</h4>
+    <button class="btn btn-success" @onclick="Checkout">Make a Payment</button>
+}
+
+@if (showCheckoutMessage)
+{
+    <div class="alert alert-success mt-3">
+        Thank you! Your order has been recorded.
+    </div>
+}
+
+@code {
+    class MenuItem
+    {
+        public required string Name { get; set; }
+        public required decimal Price { get; set; }
+        public int Quantity { get; set; } = 1;
+    }
+
+    List<MenuItem> Menu = new()
+    {
+        new() { Name = "Chicken Katsu Roll", Price = 22000 },
+        new() { Name = "Crunchy Unagi Roll", Price = 27000 },
+        new() { Name = "Tuna Volcano Roll", Price = 25000 },
+        new() { Name = "California Roll", Price = 25000 },
+        new() { Name = "Flaming Salmon Roll", Price = 25000 },
+        new() { Name = "Tempura Uramaki", Price = 25000 },
+        new() { Name = "Spicy Tuna Roll", Price = 25000 },
+        new() { Name = "Kani Aburi Mayo Roll", Price = 25000 },
+        new() { Name = "Crabstick Ebi Roll", Price = 25000 },
+        new() { Name = "Crabstick Tempura Roll", Price = 22000 },
+        new() { Name = "Dory Fillet Crispy Roll", Price = 25000 },
+        new() { Name = "Spicy Chicken Roll", Price = 22000 },
+        new() { Name = "Dory Cheese Roll", Price = 25000 },
+        new() { Name = "Tobiko Gunkan", Price = 12000 },
+        new() { Name = "Kani Mayo Gunkan", Price = 12000 },
+        new() { Name = "Ebi Tempura Crispy Roll", Price = 25000 },
+        new() { Name = "Tuna Mayo Maki", Price = 14000 },
+        new() { Name = "Kani Nigiri", Price = 10000 },
+        new() { Name = "Kani Maki", Price = 10000 },
+        new() { Name = "Kani Aburi Nigiri", Price = 14000 },
+        new() { Name = "Kani Aburi Maki", Price = 14000 },
+        new() { Name = "Crispy Cheese Roll", Price = 25000 },
+        new() { Name = "Spicy Tuna Roll", Price = 25000 },
+        new() { Name = "Cordon Bleu Roll", Price = 25000 },
+        new() { Name = "Beef Cheese Hamburger Roll", Price = 25000 },
+        new() { Name = "Deep Fried Tuna Roll", Price = 25000 },
+        new() { Name = "Ebi Tempura Cheese Roll", Price = 25000 },
+        new() { Name = "Juice", Price = 15000 },
+        new() { Name = "Soda 600ml", Price = 10000 },
+        new() { Name = "Lemon Tea", Price = 15000 },
+        new() { Name = "Sake", Price = 25000 },
+        new() { Name = "Ocha (Free Refill)", Price = 5000 },
+        new() { Name = "Mineral Water 600ml", Price = 5000 },
+    };
+
+    List<MenuItem> OrderItems = new();
+
+    decimal TotalPrice => OrderItems.Sum(x => x.Price * x.Quantity);
+
+    bool showCheckoutMessage = false;
+
+    void AddToOrder(MenuItem item)
+    {
+        if (item.Quantity < 1)
+            return;
+
+        var existing = OrderItems.FirstOrDefault(x => x.Name == item.Name);
+        if (existing != null)
+        {
+            existing.Quantity += item.Quantity;
+        }
+        else
+        {
+            OrderItems.Add(new MenuItem
+            {
+                Name = item.Name,
+                Price = item.Price,
+                Quantity = item.Quantity
+            });
+        }
+
+        item.Quantity = 1;
+        showCheckoutMessage = false;
+    }
+
+    void RemoveFromOrder(MenuItem order)
+    {
+        OrderItems.Remove(order);
+        showCheckoutMessage = false;
+    }
+
+    void Checkout()
+    {
+        OrderItems.Clear();
+        showCheckoutMessage = true;
+    }
+}
