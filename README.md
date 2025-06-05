@@ -1,13 +1,13 @@
 
 # 🍣 SimplePOS – Sushi Heero
 
-**SimplePOS – Sushi Heeronya** is a lightweight Point of Sale (POS) application built using **.NET Blazor Server**. It’s designed for small food businesses like sushi stalls or casual dining restaurants, providing a simple interface to manage menu items, process orders, and calculate totals.
+**SimplePOS – Sushi Heeron** is a lightweight Point of Sale (POS) application built using **.NET Blazor Server**. It’s designed for small food businesses like sushi stalls or casual dining restaurants, providing a simple interface to manage menu items, process orders, and calculate totals.
 
 ---
 
 ## 📌 Project Goals
 
-- Help small food vendors like *Sushi Heeronya* manage sales efficiently
+- Help small food vendors like *Sushi Heero* manage sales efficiently
 - Support basic POS functions: menu management, order handling, and billing
 - Use modern web technology (Blazor) with clean architecture
 - Include user authentication for staff
@@ -40,7 +40,7 @@
 ## 📂 Folder Structure
 
 ```
-SimplePOS-SushiHeeronya/
+SimplePOS-SushiHeero/
 ├── Pages/
 │   ├── Menu.razor
 │   ├── Cart.razor
@@ -70,8 +70,8 @@ SimplePOS-SushiHeeronya/
 
 1. **Clone the repository**
    ```bash
-   git clone https://dev.azure.com/your-org/SimplePOS-SushiHeeronya/_git/SimplePOS-SushiHeeronya
-   cd SimplePOS-SushiHeeronya
+   git clone https://github.com/TeddyTjoe1990/SimplePos.git
+   cd SimplePOS
    ```
 
 2. **Run the application**
@@ -99,7 +99,7 @@ SimplePOS-SushiHeeronya/
 To deploy to Azure App Service:
 ```bash
 az login
-az webapp up --name sushi-heeronya-pos --resource-group SimplePOS-RG --runtime "DOTNET|8.0"
+az webapp up --name sushi-heero-pos --resource-group SimplePOS-RG --runtime "DOTNET|8.0"
 ```
 
 ---
@@ -133,9 +133,7 @@ az webapp up --name sushi-heeronya-pos --resource-group SimplePOS-RG --runtime "
 
 ## 👥 Contributors
 
-- [Your Name] – Project Lead & Developer
-- [Teammate 1] – UI/UX & Testing
-- [Teammate 2] – Deployment & DevOps
+- [Jannuar Teddy Herjanto] – Project Lead & Developer
 
 ---
 

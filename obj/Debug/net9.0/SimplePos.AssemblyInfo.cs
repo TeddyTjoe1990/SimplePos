@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimplePos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14cf778ab4437c12e9a31378cf1f17a383fbab27")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimplePos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimplePos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
