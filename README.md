@@ -1,7 +1,7 @@
 
 # 🍣 SimplePOS – Sushi Heero
 
-**SimplePOS – Sushi Heeron** is a lightweight Point of Sale (POS) application built using **.NET Blazor Server**. It’s designed for small food businesses like sushi stalls or casual dining restaurants, providing a simple interface to manage menu items, process orders, and calculate totals.
+**SimplePOS – Sushi Heero** is a lightweight Point of Sale (POS) application built using **.NET Blazor Server**. It’s designed for small food businesses like sushi stalls or casual dining restaurants, providing a simple interface to manage menu items, process orders, and calculate totals.
 
 ---
 
